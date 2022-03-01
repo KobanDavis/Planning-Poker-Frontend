@@ -1,0 +1,48 @@
+{
+	"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+	"manifestVersion": "1.9",
+	"version": "1.0.0",
+	"id": "{{ appId }}",
+	"packageName": "com.microsoft.teams.extension",
+	"developer": {
+		"name": "Teams App, Inc.",
+		"websiteUrl": "https://{{ shortUrl }}/tab",
+		"privacyUrl": "https://{{ shortUrl }}/privacy",
+		"termsOfUseUrl": "https://{{ shortUrl }}/termsofuse"
+	},
+	"icons": {
+		"color": "color.png",
+		"outline": "outline.png"
+	},
+	"name": {
+		"short": "{{ appName }}",
+		"full": "{{ appName }}"
+	},
+	"description": {
+		"short": "Short description for {{ appName }}.",
+		"full": "Full description of {{ appName }}."
+	},
+	"accentColor": "#FFFFFF",
+	"configurableTabs": [
+		{
+			"configurationUrl": "https://{{ shortUrl }}/config?theme={theme}",
+			"canUpdateConfiguration": false,
+			"scopes": ["groupchat"],
+			"context": ["meetingChatTab", "meetingDetailsTab", "meetingSidePanel", "meetingStage"]
+		}
+	],
+	"bots": [
+		{
+			"botId": "{{ appId }}",
+			"scopes": ["personal", "groupchat", "team"],
+			"supportsFiles": false,
+			"isNotificationOnly": false
+		}
+	],
+	"permissions": ["identity", "messageTeamMembers"],
+	"validDomains": ["{{ shortUrl }}"],
+	"webApplicationInfo": {
+		"id": "{{ appId }}",
+		"resource": "api://{{ shortUrl }}/{{ appId }}"
+	}
+}
