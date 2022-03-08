@@ -1,6 +1,8 @@
 const fs = require('fs')
 const cp = require('child_process')
 
+require('dotenv').config()
+
 let manifestFile = fs.readFileSync('manifest/manifest.json').toString()
 const placeHolders = {
 	appName: process.env.APP_NAME,

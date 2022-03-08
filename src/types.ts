@@ -14,6 +14,7 @@ export namespace Poker {
 	export enum GameState {
 		LOBBY = 'lobby',
 		PLANNING = 'planning',
+		PLANNING_READY = 'planning_ready',
 		INGAME = 'ingame',
 		POSTGAME = 'postgame'
 	}

@@ -5,7 +5,7 @@
 	"id": "{{ appId }}",
 	"packageName": "com.microsoft.teams.extension",
 	"developer": {
-		"name": "Teams App, Inc.",
+		"name": "Koban Davis",
 		"websiteUrl": "https://{{ shortUrl }}/tab",
 		"privacyUrl": "https://{{ shortUrl }}/privacy",
 		"termsOfUseUrl": "https://{{ shortUrl }}/termsofuse"
@@ -19,8 +19,8 @@
 		"full": "{{ appName }}"
 	},
 	"description": {
-		"short": "Short description for {{ appName }}.",
-		"full": "Full description of {{ appName }}."
+		"short": "Planning poker!",
+		"full": "Planning poker inside a teams meeting!"
 	},
 	"accentColor": "#FFFFFF",
 	"configurableTabs": [

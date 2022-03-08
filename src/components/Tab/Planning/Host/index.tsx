@@ -7,23 +7,28 @@ import clsx from 'clsx'
 
 interface HostPlanningProps {
 	cards: Poker.Card[]
+	gameState: Poker.GameState
 }
 
-const HostPlanning: FC<HostPlanningProps> = ({ cards }) => {
-	const [isReady, setIsReady] = useState<boolean>(false)
+const HostPlanning: FC<HostPlanningProps> = ({ cards, gameState }) => {
 	const [flyout, setFlyout] = useState<boolean>(false)
+	const isReady = gameState === Poker.GameState.PLANNING_READY
 
 	const socket = useSocket()
-
 	const startGame = () => {
-		setIsReady(true)
-		setTimeout(() => {
-			setFlyout(true)
-			setTimeout(() => {
-				socket.emit('game_state', Poker.GameState.INGAME)
-			}, 800)
-		}, 500)
+		socket.emit('game_state', Poker.GameState.PLANNING_READY)
 	}
+
+	useEffect(() => {
+		if (isReady) {
+			setTimeout(() => {
+				setFlyout(true)
+				setTimeout(() => {
+					socket.emit('game_state', Poker.GameState.INGAME)
+				}, 800)
+			}, 500)
+		}
+	}, [isReady, socket])
 
 	return (
 		<Flex itemsCenter center col className='w-full h-full'>

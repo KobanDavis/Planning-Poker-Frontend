@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Privacy, TermsOfUse, Tab, TabConfig } from 'components'
 import { Provider, teamsV2Theme, teamsDarkV2Theme, teamsHighContrastTheme } from '@fluentui/react-northstar'
-import { useTeamsContext } from 'providers/teamsContext'
+// import { useTeamsContext } from 'providers/teamsContext'
 
 type ThemeId = 'default' | 'dark' | 'contrast'
 
@@ -20,9 +20,10 @@ const getTheme = (themeId: ThemeId) => {
 }
 
 const App: FC = () => {
-	const params = Object.fromEntries(new URLSearchParams(window.location.href.split('?')[1]).entries())
-	const context = useTeamsContext()
-	const theme = context.theme || params.theme || 'dark'
+	// const params = Object.fromEntries(new URLSearchParams(window.location.href.split('?')[1]).entries())
+	// const context = useTeamsContext()
+	// const theme = context.theme || params.theme || 'dark'
+	const theme = 'dark'
 	document.body.classList.add('overflow-hidden')
 	return (
 		<Provider theme={getTheme(theme as ThemeId)}>

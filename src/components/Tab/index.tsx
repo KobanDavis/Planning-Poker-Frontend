@@ -38,7 +38,8 @@ const Tab: FC = () => {
 						case Poker.GameState.POSTGAME:
 							return <InGame.Host gameState={gameState} cards={cards} />
 						case Poker.GameState.PLANNING:
-							return <Planning.Host cards={cards} />
+						case Poker.GameState.PLANNING_READY:
+							return <Planning.Host gameState={gameState} cards={cards} />
 						case Poker.GameState.LOBBY:
 							return <Lobby.Host users={users} />
 						default:
@@ -47,6 +48,7 @@ const Tab: FC = () => {
 				} else {
 					switch (gameState) {
 						case Poker.GameState.PLANNING:
+						case Poker.GameState.PLANNING_READY:
 							return <Planning.User {...users.find((user) => user.context.userObjectId === context.userObjectId)} cards={cards} />
 						case Poker.GameState.LOBBY:
 						case null:

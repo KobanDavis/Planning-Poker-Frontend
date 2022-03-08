@@ -12,8 +12,17 @@ const inTeams = () => {
 	}
 }
 
+let userObjectId = window.localStorage.getItem('userObjectId')
+if (!userObjectId) {
+	const id = Math.random().toString().slice(2)
+	localStorage.setItem('userObjectId', id)
+	userObjectId = id
+}
+
 const TeamsContextProvider: FC = (props) => {
 	const [teamsContext, setTeamsContext] = useState<Context>(null)
+	const params = Object.fromEntries(new URLSearchParams(window.location.href.split('?')?.[1]))
+
 	useEffect(() => {
 		if (inTeams()) {
 			if (inTeams()) {
@@ -28,10 +37,10 @@ const TeamsContextProvider: FC = (props) => {
 			setTeamsContext({
 				locale: 'en-gb',
 				theme: 'dark',
-				userObjectId: Math.random().toString().slice(2),
-				entityId: 'test',
-				frameContext: 'meetingStage' as any,
-				meetingId: 'MCMxOTptZWV0aW5nX1lUbGpPREprTldFdFpqTXhaUzAwTTJFeUxXSmlZekl0Tm1FeU1HWXlaREptWmpCbUB0aHJlYWQudjIjMA=='
+				userObjectId,
+				entityId: '',
+				frameContext: (params.host === '1' ? 'meetingStage' : '') as any,
+				meetingId: params.meetingId
 			})
 		}
 	}, [])

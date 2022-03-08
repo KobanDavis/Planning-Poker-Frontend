@@ -12,7 +12,7 @@ interface UserLobbyProps {
 }
 
 const UserLobby: FC<UserLobbyProps> = ({ context, socket, gameState }) => {
-	const [name, setName] = useState<string>(context.userPrincipalName.split('@')[0])
+	const [name, setName] = useState<string>(context.userPrincipalName?.split('@')[0])
 
 	return (
 		<Flex itemsCenter center className='h-full bg-[#1f1f1f]'>
